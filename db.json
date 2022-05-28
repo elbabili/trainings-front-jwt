@@ -1,0 +1,58 @@
+{
+  "trainings": [
+    {
+      "id": 1,
+      "name": "Java",
+      "description": "Formation Java SE 8 sur 5 jours",
+      "price": 1500,
+      "quantity": 1
+    },
+    {
+      "id": 2,
+      "name": "DotNet",
+      "description": "Formation DotNet 3 jours",
+      "price": 1000,
+      "quantity": 1
+    },
+    {
+      "id": 3,
+      "name": "Python",
+      "description": "Formation Python/Django 5 jours",
+      "price": 1300,
+      "quantity": 1
+    },
+    {
+      "id": 4,
+      "name": "Php",
+      "description": "Initiation au Dev/Web avec hp 4 jours",
+      "price": 1300,
+      "quantity": 1
+    },
+    {
+      "id": 5,
+      "name": "NodeJs",
+      "description": "Prise en main de NodeJs/Express 2 jours",
+      "price": 1400,
+      "quantity": 1
+    },
+    {
+      "id": 10,
+      "name": "PowerBi",
+      "description": "Business Intelligence 10 jours",
+      "price": 3000,
+      "quantity": 1
+    }
+  ],
+  "users": [
+    {
+      "email": "elbab@gmail.com",
+      "pwd": "1234",
+      "roles" : ["ADMIN","USER"]
+    },
+    {
+      "email": "pierre@gmail.com",
+      "pwd": "123",
+      "roles" : ["USER"]
+    }
+  ]
+}

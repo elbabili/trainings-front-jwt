@@ -1,0 +1,24 @@
+<div class="container">
+    <ng-container *ngIf="listTrainings else loading">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th> <th>NOM</th> <th>DESCRIPTION</th> <th>PRIX</th> <th>QUANTITE</th> <th>PANIER</th>
+                </tr>         
+            </thead>
+            <tbody>
+                <tr *ngFor="let training of listTrainings">
+                    <td>{{training.id}}</td>
+                    <td>{{training.name}}</td>    
+                    <td>{{training.description}}</td>
+                    <td>{{training.price}}</td>
+                    <td> <input type="number" name="quantity" style="width: 60px" [(ngModel)]="training.quantity" > </td>
+                    <td> <a class="btn btn-primary" (click)="onAddToCart(training)"> Ajouter </a></td>
+                </tr>
+            </tbody>
+        </table>    
+    </ng-container>
+    <ng-template #loading>
+        <div>Loading...</div>
+    </ng-template>
+</div>
