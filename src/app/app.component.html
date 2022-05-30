@@ -10,11 +10,14 @@
     <li>
       <a>[{{this.cartService.getSize()}}]</a>
     </li>
+    <li *ngIf="this.authService.isAdmin()" class="nav-item">
+      <a class="nav-link" href="#" routerLink="/training/?">Ajouter formation</a>
+    </li>
   </ul>
   
   <ul class="navbar-nav ms-auto">
     <li>
-      <a class="nav-link" href="#" routerLink="/login">{{this.authService.isConnected() ? 'Logout' : 'Login'}}</a>
+      <a class="nav-link" href="#" routerLink="/login">{{this.authService.isConnected() ? 'Deconnexion' : 'Connexion'}}</a>
     </li>
   </ul>
 </nav>

@@ -6,6 +6,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { OrderComponent } from './components/order/order.component';
 import { LoginoutComponent } from './components/loginout/loginout.component';
+import { TrainingComponent } from './components/training/training.component';
 
 const routes: Routes = [
     { path : 'trainings', component : TrainingsComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
     { path : 'order' , component : OrderComponent},
     { path : 'customer' , component : CustomerComponent},
     { path : 'login' , component : LoginoutComponent},
+    { path : 'training/:id' , component : TrainingComponent},
     { path : '' , redirectTo : 'trainings', pathMatch : 'full' },
     { path: '404', component: NotFoundComponent},
     { path: '**', redirectTo: '/404'}

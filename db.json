@@ -1,24 +1,10 @@
 {
   "trainings": [
     {
-      "id": 1,
-      "name": "Java",
-      "description": "Formation Java SE 8 sur 5 jours",
-      "price": 1500,
-      "quantity": 1
-    },
-    {
-      "id": 2,
-      "name": "DotNet",
-      "description": "Formation DotNet 3 jours",
-      "price": 1000,
-      "quantity": 1
-    },
-    {
       "id": 3,
       "name": "Python",
-      "description": "Formation Python/Django 5 jours",
-      "price": 1300,
+      "description": "Formation Python/Django 10 jours",
+      "price": "1500",
       "quantity": 1
     },
     {
@@ -38,21 +24,23 @@
     {
       "id": 10,
       "name": "PowerBi",
-      "description": "Business Intelligence 10 jours",
+      "description": "Business Intelligence 5 jours",
       "price": 3000,
       "quantity": 1
-    }
-  ],
-  "users": [
-    {
-      "email": "elbab@gmail.com",
-      "pwd": "1234",
-      "roles" : ["ADMIN","USER"]
     },
     {
-      "email": "pierre@gmail.com",
-      "pwd": "123",
-      "roles" : ["USER"]
+      "name": "Java",
+      "description": "Java Standard Edition 8 sur 5 jours",
+      "price": "3500",
+      "quantity": 1,
+      "id": 11
+    },
+    {
+      "id": 12,
+      "name": "DotNet",
+      "description": "DotNet & entityframework en 5 jours",
+      "price": "2750",
+      "quantity": 1
     }
   ]
 }

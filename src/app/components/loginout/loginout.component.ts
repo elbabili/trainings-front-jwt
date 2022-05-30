@@ -45,5 +45,6 @@ export class LoginoutComponent implements OnInit {
   deconnexion(){
     this.authService.deconnected();
     this.connected = false;
+    this.router.navigateByUrl('trainings');
   }
 }

@@ -10,7 +10,6 @@ export class AuthenticateService {
     {email:'elbab@gmail.com'   , password:'1234' , roles:['ADMIN','USER']},
     {email:'pierre@gmail.com'  , password:'123'  , roles:['USER']},    
   ];
-  private connected = false;
   userConnected : User = new User("","",[]);
 
   constructor(private apiService : ApiService) { }
@@ -18,21 +17,22 @@ export class AuthenticateService {
   //renvoi l'utilisateur en locale storage s'il existe sinon un client vide
   getUser(){
     let user = localStorage.getItem('user');    
-    if(user){
+    if(user){ //si j'ai déjà un utilisateur en LS, c'est que je suis connecté
       this.userConnected = JSON.parse(atob(user));    // décryptage
     }
     return this.userConnected;
   }
 
   login(email: string, password: string) {
+    let connected : boolean = false;
     this.users.forEach( (user) => {
         if((user.email == email) && (user.password == password)){
-          this.connected = true;
+          connected = true;
           this.userConnected = user;
           localStorage.setItem('user',btoa(JSON.stringify(user)));  //cryptage des données avant stockage en LS
         }
     });
-    return this.connected;
+    return connected;
   }
 
   isConnected() {
@@ -41,6 +41,15 @@ export class AuthenticateService {
 
   deconnected() {
     localStorage.removeItem('user');
+    this.userConnected = new User("","",[]);
+  }
+
+  isAdmin() {
+    let user = this.getUser();
+    if(user.roles.length > 0){
+      if(user.roles.indexOf('ADMIN') > -1)  return true;
+    }
+    return false;
   }
 
 }
