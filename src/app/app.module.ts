@@ -12,6 +12,7 @@ import { OrderComponent } from './components/order/order.component';
 import { LoginoutComponent } from './components/loginout/loginout.component';
 import { TrainingComponent } from './components/training/training.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TrainingZoomComponent } from './components/training-zoom/training-zoom.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CustomerComponent,
     OrderComponent,
     LoginoutComponent,
-    TrainingComponent
+    TrainingComponent,
+    TrainingZoomComponent
   ],
   imports: [
     BrowserModule,

@@ -31,7 +31,7 @@
     {
       "name": "Java",
       "description": "Java Standard Edition 8 sur 5 jours",
-      "price": "3500",
+      "price": 3500,
       "quantity": 1,
       "id": 11
     },
@@ -39,7 +39,7 @@
       "id": 12,
       "name": "DotNet",
       "description": "DotNet & entityframework en 5 jours",
-      "price": "2750",
+      "price": 2750,
       "quantity": 1
     }
   ]

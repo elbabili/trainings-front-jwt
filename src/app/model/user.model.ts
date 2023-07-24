@@ -1,10 +1,10 @@
 export class User {
-    email : string;
+    username : string;
     password : string;
     roles: string[];
 
-    constructor(email:string, password : string, roles : string[]){
-        this.email = email;
+    constructor(username:string, password : string, roles : string[]){
+        this.username = username;
         this.password = password;
         this.roles = roles;
     }

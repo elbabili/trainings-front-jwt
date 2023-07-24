@@ -5,11 +5,11 @@
     <div class="row">
       <div class="col-md-6">   
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Nom du Client : {{cartService.getCustomer().name}} </li>
-          <li class="list-group-item">Prénom du Client : {{cartService.getCustomer().firstName}}</li>
-          <li class="list-group-item">Adresse Client : {{cartService.getCustomer().address}}</li>
-          <li class="list-group-item">Tel Client : {{cartService.getCustomer().phone}}</li>
-          <li class="list-group-item">Email : {{cartService.getCustomer().email}}</li>
+          <li class="list-group-item">Nom du Client : {{customer.name}} </li>
+          <li class="list-group-item">Prénom du Client : {{customer.firstName}}</li>
+          <li class="list-group-item">Adresse Client : {{customer.address}}</li>
+          <li class="list-group-item">Tel Client : {{customer.phone}}</li>
+          <li class="list-group-item">Email : {{customer.email}}</li>
         </ul>     
       </div>
     
@@ -36,17 +36,19 @@
       </div>
     </div>
 
-    <div class="card-footer">
+    <div class="card-footer {{cardStyle}}">
       <div class="form-group">
         <label>Numéro de commande : </label>
-        <label> ??? </label>
+        <label *ngIf="orderNumber"> {{orderNumber}} </label>
       </div>
       <div class="form-group">
         <label>Date de la commande : </label>
-        <label> {{dateOrder | date:"MM/dd/yy"}}</label>
+        <label> {{dateOrder | date:"dd/MM/yy"}}</label>
       </div>
+      
       <div class="d-md-flex justify-content-md-end">
-        <button class="btn btn-success" style="max-width: 200px;" (click)="onOrder()">Confirmer la commande</button>   
+        <button *ngIf="orderNumber" class="btn btn-danger" style="max-width: 200px; margin-right: 10px;" (click)="backToHome()">Payer</button>
+        <button *ngIf="!orderNumber" class="btn btn-success" style="max-width: 200px;" (click)="onOrder()">Confirmer la commande</button>   
       </div>
     </div>
 </div>

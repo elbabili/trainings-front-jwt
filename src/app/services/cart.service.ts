@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Customer } from '../model/customer.model';
+import { TrainingItem } from '../model/training-item.model';
 import { Training } from '../model/training.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
+export class CartService {  
   private cart : Map<number,Training>;
 
   constructor() {     
@@ -60,5 +61,14 @@ export class CartService {
   clear() {
     this.cart.clear();
     localStorage.removeItem('cart');
+  }
+
+  getCartItems() {
+    let trainingItems : TrainingItem[] = [];
+    this.getCart().forEach( training => {
+          let trainingItem = new TrainingItem(training.id,training.name,training.price,training.quantity);
+          trainingItems.push(trainingItem);
+    });
+    return trainingItems;
   }
 }

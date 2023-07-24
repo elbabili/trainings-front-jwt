@@ -15,13 +15,14 @@ export class LoginoutComponent implements OnInit {
   user : User | undefined;
   error : string | undefined;
   connected : boolean = false;
+  mode:number = 0;
   
   constructor(private formBuilder : FormBuilder, public authService : AuthenticateService, 
     private apiService : ApiService, private router : Router) { 
-    this.user = authService.getUser(); 
+    this.user = new User("","",[]);
     this.connected = authService.isConnected();
     this.myForm = this.formBuilder.group({
-      email : [this.user.email, [Validators.required,Validators.pattern('[a-z0-9.@]*')]],
+      username : [this.user.username, [Validators.required]],
       password : [this.user.password, [Validators.required]]
     })
   }
@@ -31,10 +32,21 @@ export class LoginoutComponent implements OnInit {
 
   onLogin(form : FormGroup){
     if(form.valid){
-      if(this.authService.login(form.value.email,form.value.password)){
-          this.router.navigateByUrl('cart');
-      }
-      this.error = 'Email ou Password incorrectes';
+      this.authService.login(form.value.username,form.value.password).subscribe({
+        next : (resp) => {
+          console.log(resp)
+          let jwt = resp.headers.get('Authorization');
+          this.authService.saveToken(jwt);
+          this.router.navigateByUrl('/trainings/0');
+          this.mode = 0;
+        },
+        error : (err) => {
+           //this.error = "Bad credentials";    //ToDo personnaliser l'exception côté back et l'afficher ici
+           this.error = err.message;
+           this.mode = 1;
+        },
+        complete : () => this.error = ""
+      })
     }
   }
 
@@ -45,6 +57,6 @@ export class LoginoutComponent implements OnInit {
   deconnexion(){
     this.authService.deconnected();
     this.connected = false;
-    this.router.navigateByUrl('trainings');
+    this.router.navigateByUrl('/trainings/0');
   }
 }

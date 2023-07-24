@@ -5,8 +5,8 @@
             <div class="card-body">
                 <form [formGroup]="myForm" (ngSubmit)="onLogin(myForm)">
                     <div class="form-group">
-                        <label class="control-label">email : </label>
-                        <input type="text" formControlName="email" class="form-control">
+                        <label class="control-label">username : </label>
+                        <input type="text" formControlName="username" class="form-control">
                     </div>
                     <div class="form-group">
                         <label class="control-label">password : </label>
@@ -17,11 +17,11 @@
                 </form>
             </div>
             <div class="card-footer text-center">
-                <button class="btn btn-secondary" (click)="onAddUser()"> Nouveau Client </button>
+                <button class="btn btn-secondary" (click)="onAddUser()"> Nouvel utilisateur </button>
             </div>
         </div>
         <ng-template #deconnect>
-            <label style="margin-left:20px; margin-top:10px; margin-bottom: 10px;">login : {{this.authService.getUser().email}}</label> 
+            <label style="margin-left:20px; margin-top:10px; margin-bottom: 10px;">Username : {{this.authService.getUser().username}}</label> 
             <div >
                 <a class="btn btn-primary" (click)="deconnexion()"> Deconnexion </a>
             </div>

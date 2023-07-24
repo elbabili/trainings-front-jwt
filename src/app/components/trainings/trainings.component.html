@@ -1,30 +1,41 @@
 <div class="container">
-    <ng-container *ngIf="listTrainings else loading">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th> <th>NOM</th> <th>DESCRIPTION</th> <th>PRIX</th> <th>QUANTITE</th> <th>PANIER</th>
-                </tr>         
-            </thead>
-            <tbody>
-                <tr *ngFor="let training of listTrainings">
-                    <td>{{training.id}}</td>
-                    <td>{{training.name}}</td>    
-                    <td>{{training.description}}</td>
-                    <td>{{training.price}}</td>
-                    <td> <input type="number" name="quantity" style="width: 60px" [(ngModel)]="training.quantity" > </td>
-                    <td> 
-                        <a class="btn btn-primary" (click)="onAddToCart(training)"> 
-                            <i class="fa fa-shopping-cart"></i> Ajouter
-                        </a>                        
-                    </td>
-                    <td *ngIf="this.authService.isAdmin()"> 
-                        <a class="btn btn-danger" (click)="onDeleteTraining(training)"> Supprimer </a></td>
-                    <td *ngIf="this.authService.isAdmin()"> 
-                        <a class="btn btn-secondary" (click)="onUpdateTraining(training)"> Mise à jour </a></td>
-                </tr>
-            </tbody>
-        </table>    
+    <div *ngIf="error">
+        <div class="text-danger"> {{error}}</div>  
+    </div>
+    <ng-container *ngIf="listTrainings else loading">   
+        <div class="card-group">       
+            <div *ngFor="let training of listTrainings">                        
+                    <div class="card" style="width: 350px; margin-right: 10px; margin-bottom: 10px;">
+                        <img class="img-thumbnail img-rounded btn" (click)="onTrainingDetail(training)" [src]="host + '/photo/' + training.id" />
+                        <div class="card-body">
+                            <div *ngIf="this.authService.isAdmin()">
+                                <button (click)="onEditPhoto(training)">
+                                  <span class="fa fa-download"></span>
+                                </button>
+                                <p *ngIf="editPhoto && currentTraining == training">
+                                  <input type="file" (change)="onSelectedFile($event)">
+                                  <button class="btn btn-success" (click)="uploadPhoto()">Upload</button>
+                                  {{progress}}
+                                </p>
+                            </div>
+                          <h5 class="card-title">{{training.name}}</h5>
+                          <div>{{training.description}}</div>
+                          <div>{{training.price}}</div>
+                          <div *ngIf="this.authService.isAdmin()"> 
+                            <a class="btn btn-danger" (click)="onDeleteTraining(training)"> delete </a>
+                            <a class="btn btn-secondary" (click)="onUpdateTraining(training)"> update </a>
+                          </div>
+                          <div class="card-footer">
+                            <input type="number" name="quantity" style="width: 30px" [(ngModel)]="training.quantity" >
+                            <a class="btn btn-primary" (click)="onAddToCart(training)">
+                                <i class="fa fa-shopping-cart"></i>
+                            </a>   
+                          </div>                          
+                        </div>      
+                    </div>                                        
+            </div>
+        </div>
+
     </ng-container>
     <ng-template #loading>
         <div>Loading...</div>
